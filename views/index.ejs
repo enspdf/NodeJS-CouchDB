@@ -1,0 +1,20 @@
+<h1>Add Customer</h1>
+<form method="post" action="/customer/add">
+    <input type="text" name="name" id="name" placeholder="Add name">
+    <input type="text" name="email" id="email" placeholder="Add email">
+    <input type="submit" value="submit">
+</form>
+
+<h3>Customers</h3>
+<ul>
+<% customers.forEach(function (customer) { %>
+    <li>
+        <h4><%= customer.value.name %></h4>
+        <%= customer.value.email %>
+        <form method="post" action="/customer/delete/<%= customer.key %>">
+            <input type="hidden" value="<%= customer.value.rev %>" name="rev">
+            <input type="submit" value="X">
+        </form>
+    </li>
+<% }); %>
+</ul>
